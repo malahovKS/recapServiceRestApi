@@ -1,0 +1,94 @@
+{
+  "recapService": {
+    "API": [
+      {
+        "txt": {
+          "Route": "http://icybcluster.org.ua:33145/recapservice/api/txt",
+          "HTTP Verb": "POST",
+          "Body": "form-data",
+          "key": "fileforanalysis",
+          "value": "file",
+          "file encoding": "CP1251",
+          "Description": "Send .txt file to parse with kospekt",
+          "Limits":"each IP to 1 request per 30 sec"
+        }
+      },
+      {
+        "docdocx": {
+          "Route": "http://icybcluster.org.ua:33145/recapservice/api/docdocx",
+          "HTTP Verb": "POST",
+          "Body": "form-data",
+          "key": "fileforanalysis",
+          "value": "file",
+          "Description": "Send .doc .docx file to parse with kospekt",
+          "Limits":"each IP to 1 request per 30 sec"
+        }
+      },
+      {
+        "pdf": {
+          "Route": "http://icybcluster.org.ua:33145/recapservice/api/pdf",
+          "HTTP Verb": "POST",
+          "Body": "form-data",
+          "key": "fileforanalysis",
+          "value": "file",
+          "Description": "Send .pdf file to parse with recap service",
+          "Limits":"each IP to 1 request per 25 sec"
+        }
+      },
+      {
+        "lemma": {
+          "Route": "http://icybcluster.org.ua:33145/recapservice/api/lemma",
+          "HTTP Verb": "POST",
+          "Body": "x-www-form-urlencoded",
+          "key": "query",
+          "value": "text of query",
+          "Description": "Lemma service, response is XML",
+          "Limits":"each IP to 10 request per 5 sec"
+        }
+      },
+      {
+        "Route": "http://icybcluster.org.ua:33145/recapservice/api/clientside/",
+        "HTTP Verb": "GET",
+        "Description": "Application web form"
+      },
+      {
+        "Route": "http://icybcluster.org.ua:33145/recapservice/api/version",
+        "HTTP Verb": "GET",
+        "Description": "Application version"
+      },
+      {
+        "Route": "http://icybcluster.org.ua:33145/recapservice/api/help",
+        "HTTP Verb": "GET",
+        "Description": "API help"
+      },
+      {
+        "Route": "http://icybcluster.org.ua:33145/recapservice/api/logfile",
+        "HTTP Verb": "GET",
+        "Description": "Recap service logs"
+      },
+      {
+        "Route": "http://icybcluster.org.ua:33145/recapservice/api/docs/api.json",
+        "HTTP Verb": "GET",
+        "Description": "Retrieve file with documentation"
+      }
+    ],
+    "pythonExample": [
+      "#python example",
+      "#send POST request",
+      "#print response to console",
+      "#write response to file",
+      "import time",
+      "import requests #pip install requests if you don't have it already",
+      "url = 'http://ip:port/recapservice/api/docdocx'",
+      "files = {'fileforanalysis':open('monogrVstup.doc')} #'file' => name of html input field",
+      "r = requests.post(url, files=files)",
+      "print(r.encoding)",
+      "print(r.text)",
+      "print(r.status_code)",
+      "print(r.headers)",
+      "file = open(time.strftime('%d-%m-%Y-%I-%M-%S')+ '.json', 'wb')",
+      "file.write(r.content)",
+      "file.close()"
+    ]
+  }
+}
